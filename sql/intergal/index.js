@@ -63,6 +63,42 @@ const IntergalController = {
                 }
             })
         })
-    }
+    },
+    integralRule: (type,integral_id)=>{
+        return new Promise((resolve, reject) => {
+            db.query('select * from  integral where type = ? and integral_id = ?',[type,integral_id],(err,results)=>{
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results[0]);
+                }
+            })
+        })
+    },
+    setLog: (user_id,integral,action)=>{
+        return new Promise((resolve, reject) => {
+            db.query('INSERT INTO integral_log (user_id,integral,action,create_time,update_time) VALUES (?, ?, ?, ?,?)', [user_id,integral,action,new Date(),new Date()], (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve({
+                        code:200,
+                        message:'用户积分日志记录成功',
+                    });
+                }
+            });
+        });
+    },
+    findLog: (user_id)=>{
+        return new Promise((resolve, reject) => {
+            db.query('select * from integral_log where user_id = ?',[user_id],(err,results)=>{
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            })
+        })
+    },
 }
 export default IntergalController
