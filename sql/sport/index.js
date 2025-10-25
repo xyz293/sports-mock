@@ -27,6 +27,6 @@ const SportController = {
                 }
             })
         })
-    }
+    },
 }
 export default SportController
