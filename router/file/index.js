@@ -7,7 +7,6 @@ import fs from 'fs';
 const router = express.Router();
 const uploadDir = path.resolve(process.cwd(), 'upload');
 const fileDir = path.resolve(uploadDir, 'file');
-
 router.post('/upload', (req, res) => {
   const form = new multi.Form();
  console.log('uploadDir:', uploadDir);
