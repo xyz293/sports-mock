@@ -64,9 +64,13 @@ router.post('/verify', verifyaccessToken,async (req, res) => {
 })
 router.get('/userinfo', verifyaccessToken,async (req, res) => {
     try {
-        const { id } = req.query;
-        const result = await userController.Finduser(id);
-        res.json({ message: result ,code:200});
+          console.log(1);
+        res.json({ message: {
+            user_id:1,
+            username:'name',
+            nickname:'nickname',
+            sign:1,
+        } ,code:200});
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }

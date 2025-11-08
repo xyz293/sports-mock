@@ -15,7 +15,7 @@ const AiChat =(content)=>{
                 content: content,
               },
             ],
-            stream: false,
+            stream: true,
           }).then((response) => {
             resolve(response.choices[0].message.content);
           }).catch((error) => {
